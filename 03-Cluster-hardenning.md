@@ -11,6 +11,7 @@
 
 ![Role and RBAC](https://github.com/hassj/CKS-ACloudGuru/tree/main/Image/19-RBAC-Roles.JPG "Role and Rbac")
 
+[Service Account](https://github.com/hassj/CKS-ACloudGuru/tree/main/Image/20-Service-Account.JPG "Service Account")
 
 ### RBAC
 
