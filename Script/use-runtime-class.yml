@@ -1,10 +1,10 @@
-apiVersion: v1
+apiversion: v1
 kind: Pod
 metadata:
   name: my-pod
+
 spec:
+  runtimeClassName: my-runtimeclass
   containers:
   - name: my-container
     image: nginx
-    securityContext:
-      privileged: true

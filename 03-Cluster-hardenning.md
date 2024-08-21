@@ -3,6 +3,8 @@
 
 ## Chapter 3.2 Service account 
 
+Service Account is a k8s object that give pod access to kubernetes API, Their permission are governened by regular RBAC object.
+
 [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
 
 [Configure Service account for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)

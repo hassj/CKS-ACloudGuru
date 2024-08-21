@@ -1,0 +1,11 @@
+apiVersion: constraint.gatekeeper.sh/v1beta1
+kind: K8sRequiredLabels
+metadata:
+  name: dep-must-have-contact
+spec:
+  match:
+    kinds:
+    - apiGroups: [""]
+      kinds: ["Deployment"]
+  parameters:
+    labels: ["contact"]

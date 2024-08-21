@@ -108,6 +108,10 @@ spec:
 
 [Apparmor documentation](https://gitlab.com/apparmor/apparmor/-/wikis/Documentation)
 
+[Apparmor documentation](https://help.ubuntu.com/community/AppArmor)
+
+> link above will guide you to disable sepcific apparmor profile or disable apparmor framework
+
 ### what is apparmor?
 
 Linux security kernel module
@@ -175,7 +179,8 @@ spec:
 - Apparmor will be reload automatically after server reload.
 
 ```
-# sudo vi /etc/apparmor.d/deny-write
+# sudo vi /etc/apparmor.d/deny-write 	// put that file to this path for loading profile to reffer that file on pod manifest file
+> then chown root:root for that file 
 
 #include <tunables/global>
 profile k8s-deny-write flags=(attach_disconnected) {
