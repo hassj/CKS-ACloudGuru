@@ -183,9 +183,9 @@ FROM nginx:1.19.10
 
 USER root
 
-~~ RUN apt-get update && apt-get install -y wget ~~	//delete this line, this is unneccessary software.
+~~RUN apt-get update && apt-get install -y wget~~	//delete this line, this is unneccessary software.
 RUN useradd -ms /bin/bash nginxuser
-~~ ENV db_password=Mellon  ~~		// delete this line, use Sensitive data with k8s secret object
+~~ENV db_password=Mellon~~		// delete this line, use Sensitive data with k8s secret object
 
 USER nginxuser 	//avoid using ROOT USER
 
