@@ -1,6 +1,6 @@
 # Chapter 6: Supply Chain Security
 
-![Supply chain security cover](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/55-Supply-chain-security-cover.JPG "supply chain security cover")
+![Supply chain security cover](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/55-Supply-chain-security-cover.JPG "supply chain security cover")
 
 ## Chapter 6.2: Minimizing Base Image Attack Surface
 [Images](https://kubernetes.io/docs/concepts/containers/images/)
@@ -30,7 +30,7 @@ an attacker may be create an Compromise image, so that if you used will be open 
 [OPA gatekeeper repo](https://github.com/open-policy-agent/gatekeeper)
 
 ### we're under Attack
-![compromise image registry](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/56-compromise-image.JPG "Compromise image registry")
+![compromise image registry](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/56-compromise-image.JPG "Compromise image registry")
 
 ### Image Registries
 it is simply a service that contain the container image provide for download.
@@ -119,17 +119,17 @@ repos:
 
 - you can use SHA256 hash to validate an Image
 
-![validating image](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/57-validating-image.JPG "validating image")
+![validating image](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/57-validating-image.JPG "validating image")
 
 ### Hands-on lab
 
 - Creating a simple pod with signed image
 
-![pod with signed image](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image58-validating-image-lab.JPG "pod with signed image")
+![pod with signed image](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image58-validating-image-lab.JPG "pod with signed image")
 
 > take a notice that after name of image is @sha256:$hash , the hash number given on docker hub repo.
 
-![pod with signed image which wrong hash](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image58-validating-image-lab-2.JPG)
+![pod with signed image which wrong hash](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image58-validating-image-lab-2.JPG)
 
 ## Chapter 6.5: Analyzing a Dockerfile
 
@@ -262,7 +262,7 @@ means using tools to scanning or detect known vulnerabilities in your software.
 That is a command-line tools allows you to scan container images for vulnerabilities.
 `trivy image nginx:1.1.10` or sometimes `trivy nginx.1.1.10` 
 
-![Trivy reported](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/59-trivy-report.JPG "Trivy reported")
+![Trivy reported](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/59-trivy-report.JPG "Trivy reported")
 
 ### Hands-on lab
 - Installing trivy
@@ -297,7 +297,7 @@ sudo apt-get update && sudo apt-get install -y trivy
 
 - This functionality can be used to automatically scan images and deny workloads if there are severe vulnerabilities.
 
-![ImagePolicyWEbhook](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/60-imagePolicy-webhook.JPG "image policy webhook")
+![ImagePolicyWEbhook](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/60-imagePolicy-webhook.JPG "image policy webhook")
 
 ### Tips
 
@@ -315,9 +315,9 @@ We need to create external webhook
 
 - Installing application play as imagePolicywebhook server on control plane node 
 
-![Image scanner lab 1](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/61-image-scanner-lab-1.JPG)
+![Image scanner lab 1](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/61-image-scanner-lab-1.JPG)
 
-![Image scanner lab 1](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/61-image-scanner-lab-2.JPG)
+![Image scanner lab 1](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/61-image-scanner-lab-2.JPG)
 
 
 ### Tips
@@ -331,38 +331,38 @@ We need to create external webhook
 - Creating admmision control configuration
 > ``defaultAllow: true`` directive allows incomming image when external webhook service goes down or not. 
 
-![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/62-image-scanner-lab-1.JPG)
+![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/62-image-scanner-lab-1.JPG)
 
 - Creating kubeconfig that talked about above step
 
-![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/62-image-scanner-lab-2.JPG)
+![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/62-image-scanner-lab-2.JPG)
 
 > .cluster.server directive specify the external webhook server.
 
 - then enable admmision controller on kube-api-server, and specify the path of admmission controller configuration file. but kube-api-server is running on static pod, it won't actually see the admmission controller path,
 we need to mount that file to volume (see lab image 4 and 5 ) 
 
-![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/62-image-scanner-lab-3.JPG)
+![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/62-image-scanner-lab-3.JPG)
 
-![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/62-image-scanner-lab-4.JPG)
+![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/62-image-scanner-lab-4.JPG)
 
-![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/62-image-scanner-lab-5.JPG)
+![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/62-image-scanner-lab-5.JPG)
 
 > whenever you made changes on kubeapi-server it will short outage for the while to recreate new pod.
 
-![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/62-image-scanner-lab-6.JPG)
+![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/62-image-scanner-lab-6.JPG)
 
 - You can disable this functionality just remove imagepolicy on admmission controller plugin.
 
 `sudo vi /etc/kubernetes/manifest/kube-apiserver.yaml`
 
-![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/62-image-scanner-lab-7.JPG)
+![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/62-image-scanner-lab-7.JPG)
 
 ### Examp Tips
 
-![Exam Tips](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/63-imagePolicy-controller-1.JPG "")
+![Exam Tips](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/63-imagePolicy-controller-1.JPG "")
 
-![Exam Tips](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/63-imagePolicy-controller-2.JPG "")
+![Exam Tips](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/63-imagePolicy-controller-2.JPG "")
 
 ## Chapter 6.15 Supply Chain security review
 

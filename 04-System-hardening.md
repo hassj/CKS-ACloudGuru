@@ -30,7 +30,7 @@ Container use OS namespace to isolate themselves from other container and the ho
 
 > You can configure Pods to use host namespace instead use container namespace isolated with host namespace (in case your container need to interact directly with host) but it will be comes with security risk
 
-![Host namespace](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/24-host-namespace-1.JPG "Host namespace")
+![Host namespace](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/24-host-namespace-1.JPG "Host namespace")
 
 ```
 apiVersion: v1
@@ -48,12 +48,12 @@ spec:
 
 - There are 3 parameter which by default set to false, those are: ``hostIPC - host inter process communicate``, ``hostNetwork - network's host`` , `` hostPID if set to true, container use process id of host, can communicate directly to host``
 
-![Host namespace](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/24-host-namespace-2.JPG "Host namespace")
+![Host namespace](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/24-host-namespace-2.JPG "Host namespace")
 
 > Use settings like hostIPC, hostPID, hostNetwork only when absolutely necessary.
 
 ### Privilege mode
-![privilege-mode](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/25-privilege-mode.JPG "privilege-mode")
+![privilege-mode](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/25-privilege-mode.JPG "privilege-mode")
 
 ```
 apiVersion: v1
@@ -70,7 +70,7 @@ spec:
 
 > privilege-mode set to false by default
 
-![privilege-mode](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/25-privilege-mode-2.JPG "privilege-mode")
+![privilege-mode](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/25-privilege-mode-2.JPG "privilege-mode")
 
 ### Tips
 
@@ -82,7 +82,7 @@ spec:
 
 ### IAM Roles
 
-![IAM role](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/26-IAM-role.JPG "IAM role")
+![IAM role](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/26-IAM-role.JPG "IAM role")
 
 ### Protecting amazone resources
 - kubernetes containers running on aws maybe able to access IAM credentials, so need to be aware off:
@@ -96,7 +96,7 @@ spec:
 
 ### the cluster network
 
-![cluster network](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/26-cluster-network.JPG "cluster network")
+![cluster network](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/26-cluster-network.JPG "cluster network")
 
 ### Minimizing cluster network acccess
 
@@ -116,14 +116,14 @@ spec:
 
 Linux security kernel module
 
-![Apparmor](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/27-Apparmor.JPG "Apparmor")
+![Apparmor](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/27-Apparmor.JPG "Apparmor")
 
 
 ### Apparmor profile
 
 is a set of rules that defines what a program can do and cannot do
 
-![Apparmor profile](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/28-Apparmor-profile.JPG "Apparmor profile)
+![Apparmor profile](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/28-Apparmor-profile.JPG "Apparmor profile)
 
 An apparmor profile can be loaded to apparmor at the server level and activated in one of two modes
 
@@ -236,9 +236,9 @@ spec:
 
 then recreating apparmor-pod with annotation added.. you will get the error bellow since either worker node have not apparmor profile, to fix this, just enalbe apparmor-profile on worker nodes.
 
-![apparmor-hands-on-lab](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/29-Apparmor-profile-hands-onlab.JPG "apparmor-hands-on-lab")
+![apparmor-hands-on-lab](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/29-Apparmor-profile-hands-onlab.JPG "apparmor-hands-on-lab")
 
-![apparmor-hands-on-lab](https://github.com/hassj/CKS-ACloudGuru/blob/main/CKA-md/Image/29-Apparmor-profile-hands-onlab2.JPG "apparmor-hands-on-lab")
+![apparmor-hands-on-lab](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/29-Apparmor-profile-hands-onlab2.JPG "apparmor-hands-on-lab")
 
 ### Tips
 
