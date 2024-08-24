@@ -360,9 +360,9 @@ we need to mount that file to volume (see lab image 4 and 5 )
 
 ### Examp Tips
 
-![Exam Tips](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/63-imagePolicy-controller-1.JPG)
+![Exam Tips](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/63-imagePolicy-controller-1.JPG "")
 
-![Exam Tips](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/63-imagePolicy-controller-2.JPG)
+![Exam Tips](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/63-imagePolicy-controller-2.JPG "")
 
 ## Chapter 6.15 Supply Chain security review
 
