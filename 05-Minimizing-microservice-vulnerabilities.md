@@ -109,7 +109,7 @@ To use Pod Security polices you must first activate pod security policy admissio
 
 - Activate the podsecuritypolicy admission controller by adding --enable-admission-plugins flag for kubernetes Api server.
 
-- A pod must satisfy at least one pod security police in order to be allowed. If you activate podsecuritypolicy admission controller before creating any policies, you maynot creat any pod or it will be not allowed.
+- A pod must satisfy at least one pod security police in order to be allowed. If you activate podsecuritypolicy admission controller before creating any policies, you maynot create any pod or it will be not allowed.
 
 ### Creating Pod security policies
 PodSecurityPolicy is a k8s object, it's also use defintion yaml format.

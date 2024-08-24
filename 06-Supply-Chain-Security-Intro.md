@@ -143,9 +143,9 @@ repos:
 - There are many auto tool to scan risk issue in docker file, but this course we will analysis issue manually.
 
 ### Look at something a Dockerfile
-- User root: the final USER Directive in dockerfile is set to root, the container process will run as user root. It's usually a good idea to avoid this.
+- User root or 0 ( root user id) : the final USER Directive in dockerfile is set to root, the container process will run as user root. It's usually a good idea to avoid this.
 
-- latest:tag - in case an hacker create compromise image and tag with the latest, it will cause you do not identify what is the real image. so you will run Compromise code for your app.
+- latest:tag  in FROM directive : in case an hacker create compromise image and tag with the latest, it will cause you do not identify what is the real image. so you will run Compromise code for your app.
 
 - unneccessary software: the more software installed the more potential risk on your app.
 
@@ -183,9 +183,9 @@ FROM nginx:1.19.10
 
 USER root
 
-~~RUN apt-get update && apt-get install -y wget~~	//delete this line, this is unneccessary software.
+RUN apt-get update && apt-get install -y wget	//delete this line, this is unneccessary software.
 RUN useradd -ms /bin/bash nginxuser
-~~ENV db_password=Mellon~~		// delete this line, use Sensitive data with k8s secret object
+ENV db_password=Mellon		// delete this line, use Sensitive data with k8s secret object
 
 USER nginxuser 	//avoid using ROOT USER
 
@@ -196,4 +196,224 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ### Tips
 
+## CHAPTER 6.7: Analyzing Resource YAML Files
 
+[Cloud native Security](https://kubernetes.io/docs/concepts/security/)
+
+- sameple yaml file
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: static-analysis-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: static-analysis-deployment
+  template:
+    metadata:
+      labels:
+        app: static-analysis-deployment
+    spec:
+      hostIPC: true
+      hostNetwork: true
+      hostPID: true
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        securityContext:
+          privileged: true
+```
+
+### Static analysis yaml file
+Manually checkout the security of yaml file
+
+### Some things to look for
+- host namespace: dont let containers use the host namespace if possible
+
+- privilege mode: dont let containers use privilege mode unless absolutely necessary
+
+- User root directive: in Dockerfile, if will be run as user Root for Container
+
+- :latest tag: use specific tag, instead of latest tag 
+
+### Hands-on lab
+
+### Tips
+
+## Chapter 6.9: Scanning Images for Known Vulnerabilities
+
+[Cloud native security container](https://kubernetes.io/docs/concepts/security/#container)
+
+[trivy documentation](https://github.com/aquasecurity/trivy)
+
+### We're under Attack
+
+### What is vulnerability
+
+### What is the vulnerabilities Scanning
+
+means using tools to scanning or detect known vulnerabilities in your software.
+
+### Tivy tools
+That is a command-line tools allows you to scan container images for vulnerabilities.
+`trivy image nginx:1.1.10` or sometimes `trivy nginx.1.1.10` 
+
+![Trivy reported](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/59-trivy-report.JPG "Trivy reported")
+
+### Hands-on lab
+- Installing trivy
+
+```
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a
+/etc/apt/sources.list.d/trivy.list
+sudo apt-get update && sudo apt-get install -y trivy
+
+```
+
+### Exam Tips
+
+## Chapter 6.11: Scanning Images with an Admission Controller
+
+[cloud native security](https://kubernetes.io/docs/concepts/security/#container)
+
+[Image Policy webhook admission controller](https://kubernetes.io/docs/concepts/security/#container)
+
+### Admission controller
+
+- It intercept request to k8s api 
+
+- It can be allow or deny or modify request before changes are actually made.
+
+### ImagePolicy webhook admission controller
+
+- the ImagePolicyWebhook controller sends a request to an external webhook containing information about the image being used.
+
+- The webhook can approve or deny the creation of the workload based on the image.
+
+- This functionality can be used to automatically scan images and deny workloads if there are severe vulnerabilities.
+
+![ImagePolicyWEbhook](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/60-imagePolicy-webhook.JPG "image policy webhook")
+
+### Tips
+
+## Chapter 6.12: Setting up an Image Scanner
+
+[Image Policy webhook](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook)
+
+[sample webhook app source code](https://github.com/linuxacademy/content-cks-trivy-k8s-webhook)
+
+### Our goal
+- In order to scan incomming images using imagepolicywebhook, we need an application that can receive the webhook requests and perform the image scanning.
+We need to create external webhook 
+
+### Hands-on lab
+
+- Installing application play as imagePolicywebhook server on control plane node 
+
+![Image scanner lab 1](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/61-image-scanner-lab-1.JPG)
+
+![Image scanner lab 1](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/61-image-scanner-lab-2.JPG)
+
+
+### Tips
+
+## Chapter 6.13: Configuring the ImagePolicyWebhook Admission Controller
+
+[Image Policy webhook](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook)
+
+- download ca.crt
+- download client cert and key, used to communicate with external service 
+- Creating admmision control configuration
+> ``defaultAllow: true`` directive allows incomming image when external webhook service goes down or not. 
+
+![configuring admmision controller](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/62-image-scanner-lab-1.JPG)
+
+- Creating kubeconfig that talked about above step
+
+![configuring admmision controller](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/62-image-scanner-lab-2.JPG)
+
+> .cluster.server directive specify the external webhook server.
+
+- then enable admmision controller on kube-api-server, and specify the path of admmission controller configuration file. but kube-api-server is running on static pod, it won't actually see the admmission controller path,
+we need to mount that file to volume (see lab image 4 and 5 ) 
+
+![configuring admmision controller](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/62-image-scanner-lab-3.JPG)
+
+![configuring admmision controller](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/62-image-scanner-lab-4.JPG)
+
+![configuring admmision controller](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/62-image-scanner-lab-5.JPG)
+
+> whenever you made changes on kubeapi-server it will short outage for the while to recreate new pod.
+
+![configuring admmision controller](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/62-image-scanner-lab-6.JPG)
+
+- You can disable this functionality just remove imagepolicy on admmission controller plugin.
+
+`sudo vi /etc/kubernetes/manifest/kube-apiserver.yaml`
+
+![configuring admmision controller](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/62-image-scanner-lab-7.JPG)
+
+### Examp Tips
+
+![Exam Tips](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/63-imagePolicy-controller-1.JPG)
+
+![Exam Tips](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/63-imagePolicy-controller-2.JPG)
+
+## Chapter 6.15 Supply Chain security review
+
+### Images
+
+- Try to use images that run up to date software to minimize software vulnerabilities
+
+- Minimize the amount of unneccessary software that will could increase security risks.
+
+- Beaware of the possibility of images that have been compromised by attacker.
+
+### Whitelist images registry
+
+- limit users to only trusted image registries to prevent them from running images from untrusted sources in the cluster.
+
+- You can use tool like OPA gatekeeper to whitelist image registry
+
+### Image validation
+
+- Container images can be signed with a hash generated by the content of image 
+
+- you can append the hash to container image: imageName:tag@sha256:hash
+
+### Static analysis: Dockerfile
+
+- to avoid running container as ROOT user. or user ID of 0.
+
+- Avoid use latest to tag the image version
+
+- Try to avoid including unnecessary software in the final Image
+
+- Avoid storing sensitive data like password in the Dockerfile. Use secret instead.
+
+### Static analysis YAML
+
+- when possible, avoid the use of host namespace such as (hostNetwork, hostPID, hostIPC)
+
+- when possible, avoid using privileged containers with privileged: true
+
+- Avoid running as user ROOT or user ID 0 in securityContext. runAsUser
+
+- Don't use the latest:tag, but instead of use specific tag, or fixed tag to avoid downloadind new image and potentially unvetted image
+
+### Vulnerable Scanning
+
+64-vulnerable-scan.JPG
+
+65-vulnerable-scaning-admission-controller.JPG
+
+65-vulnerable-scaning-admission-controller-2.JPG
+
+65-vulnerable-scaning-admission-controller-3.JPG
+
+65-vulnerable-scaning-admission-controller-4.JPG
