@@ -1,0 +1,8 @@
+apiVersion: audit.k8s.io/v1
+kind: Policy
+rules:
+- level: none
+  resources:
+  - group: ""
+    resources: ["pod", "services"]
+  namespaces: ["test"]

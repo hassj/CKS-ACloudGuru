@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-immutablity-pod
+
+spec:
+  containers:
+  - name: my-immutable-container
+    image: nginx
+    securityContext:
+      readOnlyRootFileSystem: true
+    
+    volumeMounts:
+      - name: cache
+        mountPath: /var/cache/nginx
+      - name: log
+        mountPath: /var/run
+  
+  volumes:
+  - name: cache
+    emptyDir: {}
+  - name: log
+    emptyDir: {}
