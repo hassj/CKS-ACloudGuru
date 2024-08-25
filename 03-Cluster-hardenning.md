@@ -11,9 +11,9 @@ Service Account is a k8s object that give pod access to kubernetes API, Their pe
 
 [Managing Service Account](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/)
 
-![Role and RBAC](https://github.com/hassj/CKS-ACloudGuru/tree/main/Image/19-RBAC-Roles.JPG "Role and Rbac")
+![Role and RBAC](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/19-RBAC-Roles.JPG "Role and Rbac")
 
-![Service Account](https://github.com/hassj/CKS-ACloudGuru/tree/main/Image/20-Service-Account.JPG "Service Account")
+![Service Account](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/20-Service-Account.JPG "Service Account")
 
 ![Under attack](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/21-Uder-attack.JPG)
 
@@ -46,11 +46,11 @@ kubernetes API is an http interface to the CLUSTER
 > so, just limiting the user access via stand point and limiting access to api via segment network and firewall that's all necessary way to do for securing k8s cluster.
 
 ## Chapter 3.6: kubernetes update
-![k8s update](https://github.com/hassj/CKS-ACloudGuru/tree/main/Image/22-k8s-update.JPG "k8s udpate")
+![k8s update](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/22-k8s-update.JPG "k8s udpate")
 
 [udpate skew version](https://kubernetes.io/releases/version-skew-policy/)
 
 ## Chapter 3.7: Cluster hardening review
 
-![Cluster hardening review](https://github.com/hassj/CKS-ACloudGuru/tree/main/Image/23-cluster-hardening-review.JPG "Cluster hardening review")
+![Cluster hardening review](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/23-cluster-hardening-review.JPG "Cluster hardening review")
 

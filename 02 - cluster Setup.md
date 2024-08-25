@@ -146,7 +146,7 @@ is a tool that allow you to check your cluster how well it conform to the cis ku
 
 `# wget -O kube-bench-control-plan https://raw.githubusercontent.com/aquasecurity/kube-bench/main/job-master.yaml`
 
-![cis-kube-bench-tool-scan](https://github.com/hassj/CKS-ACloudGuru/tree/main/Image/13 - cis-kube-bench-tool-scan.jpg "cis-kube-bench-tool-scan")
+![cis-kube-bench-tool-scan](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/13 - cis-kube-bench-tool-scan.jpg "cis-kube-bench-tool-scan")
 
 ## 2.6 Fixing Security Issues Detected by a CIS Benchmark
 
@@ -177,7 +177,7 @@ Then based on the remediation particular of each node for fixing the issue relat
 That is an object put in midle external user and top of service that allow user can communicate securely with ingress then ingress can comunicate old way http with service
 
 ### Ingress and TLS
-![Ingress and TLS](https://github.com/hassj/CKS-ACloudGuru/tree/main/Image/14-Ingress-tls.JPG "Ingress and TLS")
+![Ingress and TLS](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/14-Ingress-tls.JPG "Ingress and TLS")
 
 ### Hands-on lab
 - Create a certificate key via openssl, and delete that file once you already created that object.
@@ -215,7 +215,7 @@ spec:
 
 - result of tls-ingress (dont care about the error because of we dont create any default backend service
 
-![tls ingress](https://github.com/hassj/CKS-ACloudGuru/tree/main/Image/15-ingress-tls-lab.JPG "TLS ingress")
+![tls ingress](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/15-ingress-tls-lab.JPG "TLS ingress")
 
 ## Chapter 2.10: Securing Node Endpoints
 [Check required ports](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#check-required-ports)
@@ -230,11 +230,11 @@ Scan port on your CLUSTER
 
 `nc 127.0.0.1 6443 -v`
 
-![Listenning ports on control plane node](https://github.com/hassj/CKS-ACloudGuru/tree/main/Image/16-Listenning-ports.JPG "Listenning ports")
+![Listenning ports on control plane node](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/16-Listenning-ports.JPG "Listenning ports")
 
 > Most of ports above you dont want to reachable from the outside 
 
-![Listenning ports on worker node](https://github.com/hassj/CKS-ACloudGuru/tree/main/Image/17-Listenning-ports-worker-node.JPG "Listenning ports")
+![Listenning ports on worker node](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/17-Listenning-ports-worker-node.JPG "Listenning ports")
 
 ### Tips
 
@@ -266,7 +266,7 @@ it's also an attack surface, so it shoule be control by RBAC correctly or use an
 
 ## Chapter 2.14: Cluster setup review
 
-![Cluster setup review](https://github.com/hassj/CKS-ACloudGuru/tree/main/Image/18-Cluster-setup-review.JPG "Cluster setup review")
+![Cluster setup review](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/18-Cluster-setup-review.JPG "Cluster setup review")
 
 1. Network policy
 - Tip 1: defaul deny policy + targed policy to block all but necessary traffic in namespace
