@@ -15,7 +15,8 @@ Service Account is a k8s object that give pod access to kubernetes API, Their pe
 
 ![Service Account](https://github.com/hassj/CKS-ACloudGuru/tree/main/Image/20-Service-Account.JPG "Service Account")
 
-![Under attack](https://github.com/hassj/CKS-ACloudGuru/tree/main/Image/21-Uder-attack.JPG)
+![Under attack](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/21-Uder-attack.JPG)
+
 
 ### RBAC
 If an attacker get control a pod, then he could keep controlling all of cluster via service account with high permission, so we need to limit and restrict permission of service account via RBAC
