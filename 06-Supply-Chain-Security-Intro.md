@@ -125,7 +125,7 @@ repos:
 
 - Creating a simple pod with signed image
 
-![pod with signed image](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image58-validating-image-lab.JPG "pod with signed image")
+![pod with signed image](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/58-validating-image-lab.JPG "pod with signed image")
 
 > take a notice that after name of image is @sha256:$hash , the hash number given on docker hub repo.
 
