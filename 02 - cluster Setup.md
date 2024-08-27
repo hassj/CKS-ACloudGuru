@@ -151,7 +151,9 @@ https://raw.githubusercontent.com/aquasecurity/kube-bench/main/job-master.yaml
 ![cis-kube-bench-tool-scan](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/13-cis-kube-bench-tool-scan.jpg "cis-kube-bench-tool-scan")
 
 > some of issues mentioned in CIS benchmark documentation:
->###############################33
+>
+>########################################################
+>
 > kube-apiserver
 > 
 > Turn off profiling by adding the --profiling=false flag to the kube-apiserver
@@ -159,6 +161,7 @@ https://raw.githubusercontent.com/aquasecurity/kube-bench/main/job-master.yaml
 > Change the authorization mode from AlwaysAllow to Node, RBAC
 >
 >########################################################
+>
 > kubelet
 >
 > Below authentication, change the anonymous value from enabled: true to enabled: false to disable anonymous authentication
@@ -166,6 +169,7 @@ https://raw.githubusercontent.com/aquasecurity/kube-bench/main/job-master.yaml
 > Ensure Webhook mode is enabled for authentication and authorization, setting enabled to true and authorization mode to Webhook
 >
 >########################################################
+>
 > etcd
 >
 > Enable client-cert-auth by setting the flag value to true
