@@ -34,6 +34,11 @@ If an attacker get control a pod, then he could keep controlling all of cluster 
 > Make sure service account have only the necessary RBAC permission
 
 ### Hands-on lab
+- checking rolebinding on specific namespace then descirbe them for detail to see which serviceAccount bind to which role.
+
+- describe role to see which permission grant to that role then edit it if need
+
+- seperating permission on each role for mitigate scope of permission by creating one more role and rolebinding then attached that RBAC (role and rolebinding) to service account
 
 ## Chapter 3.5: Restricting access to kubernetes API
 
@@ -53,4 +58,9 @@ kubernetes API is an http interface to the CLUSTER
 ## Chapter 3.7: Cluster hardening review
 
 ![Cluster hardening review](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/23-cluster-hardening-review.JPG "Cluster hardening review")
+
+###########################################3
+
+> note: when copying and paste code into Vim editor from lab guide, to avoid copying any space and hashes, should enter :set paste (enter i character)
+
 

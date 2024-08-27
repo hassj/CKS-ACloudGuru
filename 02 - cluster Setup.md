@@ -58,7 +58,7 @@ spec:
     matchLabels:
 	  app: nginx
   policyTypes:
-  - Ingress:
+  - Ingress
   ingress:
   - from:
     - namespaceSelector:
@@ -74,7 +74,7 @@ spec:
 ### Ingress/ Egress rules
 
 ### Hands on Lab
-Take notice different between definition below, the first one is sperate two rule in a array, the second one is combined single rule.
+Take notice different between definition below, the first one is sperate two rule in a array, the second one is combined into single rule.
 - Definition with one rule:
 
 ```
@@ -131,6 +131,7 @@ spec:
 ## Running CIS benchmark with kube-bench
 
 [CIS benchmark](https://www.cisecurity.org/benchmark/kubernetes)
+
 [Kube-bench](https://github.com/aquasecurity/kube-bench)
 
 ### The CIS kubernetes benchmark
@@ -142,15 +143,37 @@ The CIS kubernetes benchmark provides a guideline for security kubernetes enviro
 is a tool that allow you to check your cluster how well it conform to the cis kubernetes benchmark. it will generate the report to you about the issue that occure on your cluster which mentioned on CIS benchmark documentation.
 
 ### Hands on lab
-- Download this file on control plan and worker node then install: https://raw.githubusercontent.com/aquasecurity/kube-bench/main/job-master.yaml
+- Download this file on control plan and worker node then install:
+https://raw.githubusercontent.com/aquasecurity/kube-bench/main/job-master.yaml
 
 `# wget -O kube-bench-control-plan https://raw.githubusercontent.com/aquasecurity/kube-bench/main/job-master.yaml`
 
-![cis-kube-bench-tool-scan](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/13 - cis-kube-bench-tool-scan.jpg "cis-kube-bench-tool-scan")
+![cis-kube-bench-tool-scan](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/13-cis-kube-bench-tool-scan.jpg "cis-kube-bench-tool-scan")
+
+> some of issues mentioned in CIS benchmark documentation:
+>###############################33
+> kube-apiserver
+> 
+> Turn off profiling by adding the --profiling=false flag to the kube-apiserver
+>
+> Change the authorization mode from AlwaysAllow to Node, RBAC
+>
+>########################################################
+> kubelet
+>
+> Below authentication, change the anonymous value from enabled: true to enabled: false to disable anonymous authentication
+>
+> Ensure Webhook mode is enabled for authentication and authorization, setting enabled to true and authorization mode to Webhook
+>
+>########################################################
+> etcd
+>
+> Enable client-cert-auth by setting the flag value to true
 
 ## 2.6 Fixing Security Issues Detected by a CIS Benchmark
 
 [Kube-bench](https://www.cisecurity.org/benchmark/kubernetes)
+
 [Kube-bench-github](https://github.com/aquasecurity/kube-bench)
 
 > some command helpfully: `kubectl delete job job_name`

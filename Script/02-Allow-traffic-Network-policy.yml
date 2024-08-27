@@ -1,0 +1,44 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: my-np
+  namespace: test-ns
+spec:
+  podSelector:
+    matchLabels:
+      app: nginx
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          project: test
+    - podSelector:
+        matchLabels:
+          app: client
+    - ipBlock:
+        cidr: 172.17.0.0/16
+        except:
+        - 172.17.1.0/24
+    
+    ports:
+    - protocol: TCP
+      port: 80
+  
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          project: dev-test
+    - podSelector:
+        matchLabels:
+          app: nginx
+    - ipBlock:
+        cidr: 192.169.10.0/24
+        except:
+        - 192.16.11.0/24
+    ports:
+    - protocol: TCP
+      port: 5987
