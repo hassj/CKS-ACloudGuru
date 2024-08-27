@@ -2,7 +2,7 @@
 
 ## Chapter 5.1: Minizing microsevice Vulnerabilties
 
-![Microservice Vulnerabilities](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/30-Microservice-vulnerabilities.JPG "Microservice Vulnerabilities")
+![Microservice Vulnerabilities](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/30-Microservice-vulnerabilities.JPG "Microservice Vulnerabilities")
 
 ## Chapter 5.2 Managing Container Access with Security Contexts
 
@@ -82,7 +82,7 @@ Sometimes one of devs deploy application into k8s cluster without implement appl
 - Use them to automatically enforce desired Security configuration within the cluster.
 
 ### How does pod security policy work 
-![Pod security policies example](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/31-Pod-security-policies-example.JPG "Pod Security policies example")
+![Pod security policies example](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/31-Pod-security-policies-example.JPG "Pod Security policies example")
 
 > Pod Security polices can change the pod by providing defaults for certain values.
 
@@ -93,7 +93,7 @@ Sometimes one of devs deploy application into k8s cluster without implement appl
 4. Volumes: control with volume types which are allowed for pod storage volume.
 5. allowedHostPaths: limit hostPath volumes to only specific path
 
-![Pod security policies can do](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/32-pod-security-policies-can-do.JPG "Pod security policies can do")
+![Pod security policies can do](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/32-pod-security-policies-can-do.JPG "Pod security policies can do")
 
 > Now pod Security polices are being deprecated and will be replaced by different k8s functionality in the future.
 
@@ -153,11 +153,11 @@ rules:
 
 ### Hands-on lab
 
-![Pod Security policy Hands-on lab](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/35-pod-security-policy-hands-on-lab.JPG "Pod security policy hands-on lab")
+![Pod Security policy Hands-on lab](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/35-pod-security-policy-hands-on-lab.JPG "Pod security policy hands-on lab")
 
 - First, on the control plane node we enable security policy admission controller in file ``/etc/kubernetes/manifest/kube-apiserver.yml``
 
-![Admission controller](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/34-admission-controller.JPG "Admission controller")
+![Admission controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/34-admission-controller.JPG "Admission controller")
 
 - Create podsecuritypolicy non privileged
 
@@ -225,11 +225,11 @@ subjects:
 
 - this time create Pod using service account
 
-![Pod use service account](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/36-Creating-Pod-using-ServiceAccount.JPG "Pod use service account")
+![Pod use service account](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/36-Creating-Pod-using-ServiceAccount.JPG "Pod use service account")
 
 - And now create simple pod using service Account but with an violation permission bellow: 
 
-![Pod use service account violation](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/36-Creating-Pod-using-ServiceAccount-violation.JPG "Pod use service account violation")
+![Pod use service account violation](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/36-Creating-Pod-using-ServiceAccount-violation.JPG "Pod use service account violation")
 
 ## Chapter 5.5: Using OPA Gatekeeper
 
@@ -244,15 +244,15 @@ subjects:
 
 - Example
 
-![OPA Gatekeeper example](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/38-OPA-gatekeeper-example.JPG "OPA gatekeeper example")
+![OPA Gatekeeper example](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/38-OPA-gatekeeper-example.JPG "OPA gatekeeper example")
 
 > so, you could define any policies or requirement for any objects in creation time using OPA Gatekeeper.
 
-![OPA gatekeeper deny creating deployment example](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/38-OPA-gatekeeper-example-2.JPG "OPA gatekeeper deny creating deployment example")
+![OPA gatekeeper deny creating deployment example](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/38-OPA-gatekeeper-example-2.JPG "OPA gatekeeper deny creating deployment example")
 
 ### Constraint template
 
-![Constraint Template](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/39-Constraint-template.JPG "constraint template")
+![Constraint Template](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/39-Constraint-template.JPG "constraint template")
 
 ```
 apiVersion: templates.gatekeeper.sh./v1beta1
@@ -290,7 +290,7 @@ spec:
 
 ### Constraint
 
-![Constraint example](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/40-Constraint-example.JPG "constraint example")
+![Constraint example](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/40-Constraint-example.JPG "constraint example")
 
 ```
 
@@ -329,7 +329,7 @@ data:
 
 ```
 ### Seret data in environment variable 
-![Secret as environment](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/42-secret-environment.JPG "secret as environment")
+![Secret as environment](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/42-secret-environment.JPG "secret as environment")
 
 ```
 apiVersion: v1
@@ -355,7 +355,7 @@ spec:
 ```
 
 ### Secret data in volume
-![secret data as volume](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/43-secret-data-in-volume.JPG "secret data as volume")
+![secret data as volume](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/43-secret-data-in-volume.JPG "secret data as volume")
 
 ```
 apiVersion: v1
@@ -377,7 +377,7 @@ volumes:
       secretName: my-secret
 ```
 ### Retrieving secret data 
-![Retrieve secret data](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/44-Retrieve-secret-data.JPG "Retrieve secret data")
+![Retrieve secret data](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/44-Retrieve-secret-data.JPG "Retrieve secret data")
 
 ```
 kubectl get secret <secret_name> -o yaml 		// to get base64 encode secret data
@@ -387,7 +387,7 @@ echo <base64_data> | base64 --decode  			// to decode encode secret data.
 ### Hands-on 
 - encoded raw data 
 
-![secret in pod](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/45-secret-example.JPG "secret in pod")
+![secret in pod](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/45-secret-example.JPG "secret in pod")
 
 - paste in the pod definition
 
@@ -431,25 +431,25 @@ spec:
 [gVisor Documentation](https://gvisor.dev/docs/)
 
 ### what is container runtime sanbox ?
-![Container runtime sanbox](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/46-Container-runtime-sanbox.JPG "Container runtime sanbox")
+![Container runtime sanbox](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/46-Container-runtime-sanbox.JPG "Container runtime sanbox")
 
 It is a special container runtime that providing extra layer of process isolation and greater security.
 
-![Container runtime sanbox Use cases](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/47-Container-runtime-sanbox-use-casese.JPG "Container runtime sanbox use cases")
+![Container runtime sanbox Use cases](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/47-Container-runtime-sanbox-use-casese.JPG "Container runtime sanbox use cases")
 
 Run container runtime sanbox in situations where you need extra security around containers such as: untrust workload, multi tenant, small and simple 
 
 > The extra security of container runtime sanbox usually comes at the cost of performance, so that why we dont implement container runtime sanbox eveywhere
 
 ### gVisor/runsc
-![gvisor/runsc](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/48-gvisor-runSC.JPG "gvisor/runsc")
+![gvisor/runsc](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/48-gvisor-runSC.JPG "gvisor/runsc")
 
 - gvisor is a linux kernel application that simulate kernel within host kernel.
 
 - runsc is an OCI-runtime container that integrates gvios with application like k8s.
 
 ### Kata containers
-![kata container](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/49-kata-container.JPG "kata container")
+![kata container](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/49-kata-container.JPG "kata container")
 
 ### Tips
 
@@ -575,11 +575,11 @@ spec:
 
 > dmesg command basically print out kernel message.
 
-![runtime sandbox hands-on lab 1](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/52-runtime-sanbox-hands-on-lab-1.JPG "runtime sandbox hands-on lab 1")
+![runtime sandbox hands-on lab 1](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/52-runtime-sanbox-hands-on-lab-1.JPG "runtime sandbox hands-on lab 1")
 
-![runtime sandbox hands-on lab 2](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/52-runtime-sanbox-hands-on-lab-2.JPG "runtime sandbox hands-on lab 2")
+![runtime sandbox hands-on lab 2](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/52-runtime-sanbox-hands-on-lab-2.JPG "runtime sandbox hands-on lab 2")
 
-![runtime sandbox hands-on lab error](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/52-runtime-sanbox-hands-on-lab-error.JPG "runtime sandbox hands-on lab error")
+![runtime sandbox hands-on lab error](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/52-runtime-sanbox-hands-on-lab-error.JPG "runtime sandbox hands-on lab error")
 
 
 ### Tips
@@ -596,7 +596,7 @@ spec:
 
 ### We're under attack
 
-![mtls is](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/53-mtls.JPG "mtls is")
+![mtls is](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/53-mtls.JPG "mtls is")
 
 > https is secure method that only one way, in which server have sertificate and client just trust that certification without private key, 
 > 
