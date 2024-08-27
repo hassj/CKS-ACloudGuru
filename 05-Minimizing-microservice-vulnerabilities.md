@@ -132,7 +132,7 @@ spec:
 
 ### Authorizing policies
 
-![Two-ways-authorize-policies](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/33-Autho.rized-policy.JPG "Two-ways-authorize-policies")
+![Two-ways-authorize-policies](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/33-Autho.rized-policy.JPG "Two-ways-authorize-policies")
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
