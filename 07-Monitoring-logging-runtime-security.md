@@ -37,6 +37,10 @@ There are different ways to run Falco, you can run as background job, or setup w
 ### Falco rules
 ![Falco rule example](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/66-falco-example.JPG)
 
+[Falco rules example](https://falco.org/docs/examples/)
+
+[Falco rules git repo](https://github.com/falcosecurity/rules/blob/main/rules/falco_rules.yaml)
+
 ### Hands-on lab
 - First, installing the falco on the nodes having container is running. it means that falco will be installed on all of worker nodes.
 ```
@@ -167,8 +171,11 @@ rules:
 - level: how detailed the rule logs are, can be: 
 
 > none: log nothing
+>
 > metadata: log only high level data
+>
 > request: log the metadata and request body
+>
 > requestResponse: all things such as: metadata and request body and response body.
 
 ### How audit logging works?

@@ -123,7 +123,7 @@ Linux security kernel module
 
 is a set of rules that defines what a program can do and cannot do
 
-![Apparmor profile](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/28-Apparmor-profile.JPG "Apparmor profile)
+![Apparmor profile](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/28-Apparmor-profile.JPG "Apparmor profile")
 
 An apparmor profile can be loaded to apparmor at the server level and activated in one of two modes
 
@@ -155,7 +155,7 @@ An apparmor profile can be stored in a file and applied using command ``apparmor
 ### Applying apparmore profile to Container
 - use annotation to apply apparmor profiles to specific containers
 
-- The annotation name should begin with ``container.apparmor.security.beta.kubernetes.io/`` , followed by the name of the container.
+- The annotation name should begin with ``container.apparmor.security.beta.kubernetes.io/`` , followed by the name of the container, and path of apparmor-profile
 
 - Or You can specify the appArmorProfile on either a container's securityContext or on a Pod's securityContext.
 

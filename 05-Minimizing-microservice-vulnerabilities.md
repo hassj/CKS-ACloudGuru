@@ -229,7 +229,7 @@ subjects:
 
 - And now create simple pod using service Account but with an violation permission bellow: 
 
-![Pod use service account violation](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/36-Creating-Pod-using-ServiceAccount-violation.JPG "Pod use service account violation")
+![Pod use service account violation](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/37-Creating-Pod-using-ServiceAccount-violation.JPG "Pod use service account violation")
 
 ## Chapter 5.5: Using OPA Gatekeeper
 

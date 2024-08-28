@@ -333,7 +333,19 @@ We need to create external webhook
 
 ![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/62-image-scanner-lab-1.JPG)
 
-- Creating kubeconfig that talked about above step
+> some case you can use path directive to specific the path of kubeconfig file as below:
+```
+cloud_user@k8s-control:~$ cat /etc/kubernetes/admission-control/admission-control.conf
+apiVersion: apiserver.config.k8s.io/v1
+kind: AdmissionConfiguration
+plugins:
+- name: ImagePolicyWebhook
+  path: imagepolicy.conf
+
+```
+> ``path`` directive specify the kubeconfig file as /etc/kubernetes/admission-control/imagepolicy.conf
+
+- Or Creating kubeconfig that talked about above step
 
 ![configuring admmision controller](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/62-image-scanner-lab-2.JPG)
 

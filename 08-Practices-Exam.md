@@ -60,4 +60,73 @@ spec:
       port: 80
 ```
 
-![Practice lab](https://github.com/hassj/CKA-acloudguru/blob/main/CKA-md/Image/69-practice-lab.JPG)
+![Practice lab](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/69-practice-lab.JPG)
+
+
+## Using Trivy to scan Image
+
+` kubectl get pod -n sunnydale -o custom-columns="NAME:.metadata.name, IMAGE:.spec.containers[*].image" `
+
+`trivy image -s HIGH,CRITICAL <image_name>`
+
+## Apparmor profile
+
+take a note that, need to load apparmor on each nodes which you need to use it.
+
+
+> Take a notice about the apparmor and falco both need to load/enable/installed on each node that need to be scaned.
+
+## Audit log, and monitoring cluster
+
+- Monitoring cluster with falco. Falco need to be installed on each nodes which pod running on.
+
+- Falco rules
+```
+- rules: name_of_rule
+  desc: describe rule
+  condittion: container.name = "test" and evt.type = execve
+  output: "%evt.time, %user.id, %proc.name, %container.id"
+  priority: WARNNING
+```
+
+- Audit log: need to be enabled on kube-apiServer with 3 parameters:
+``--audit-log-path``, ``audit-policy-file``, ``audit-log-maxage``, ``audit-log-maxbackup``
+
+## working with secret
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-Pod
+  namespace: larry
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+	command: ["sh","-c","...]
+	volumeMounts:
+	- name: credential
+	  mountPath: /etc/credentials
+	  readOnly: true
+  volumes:
+  - name: credential
+    secret:
+	  secret_name: secrete_name_fiel
+	
+```
+## Immutable container
+
+Take note of the configuration setting for ``allowPrivilegedEscalation`` and ``runAsUser``
+
+## runtimeClass and gVisor/runsc or kata container application
+
+![gvisor-hands-on-lab](https://github.com/hassj/CKS-ACloudGuru/blob/main/Image/gvisor-hands-on-lab.JPG "gvisor-hands-on-lab")
+
+
+# Usefull refference link:
+
+[kubernetes command commonly](https://technekey.com/customizing-the-kubectl-output/)
+
+
+> Take a notice about the apparmor and falco and gVisor all they need to load/enable/installed on each node that need to be scaned.
